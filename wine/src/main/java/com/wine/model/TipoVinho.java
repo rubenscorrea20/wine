@@ -1,4 +1,4 @@
-package com.algaworks.wine.model;
+package com.wine.model;
 
 public enum TipoVinho {
 
