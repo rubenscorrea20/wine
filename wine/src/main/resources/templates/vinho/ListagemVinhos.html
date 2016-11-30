@@ -47,7 +47,7 @@
 					<tbody>
 						<tr th:each="vinho : ${vinhos}">
 							<td th:text="${vinho.codigo}">1</td>
-							<td><a href="#" th:text="${vinho.nome}">Viña Amalia Dos Fincas Malbec</a></td>
+							<td><a th:href="@{/vinhos/{codigo}(codigo=${vinho.codigo})}" th:text="${vinho.nome}">Viña Amalia Dos Fincas Malbec</a></td>
 							<td th:text="${vinho.tipo.descricao}">Tinto</td>
 							<td th:text="${vinho.safra}">2013</td>
 							<td th:text="${vinho.volume}">750</td>

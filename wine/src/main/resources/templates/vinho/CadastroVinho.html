@@ -19,6 +19,11 @@
 
 		<div class="container-fluid">
 
+			<!-- Atributo Strings diz q se o valor "mensagem" não for vazia, ele mostra o alerta -->
+			<div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}" >
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+				<span th:text="${mensagem}"></span>
+			</div>
 
 
 			<form method="POST" th:object="${vinho}" class="form-vertical  js-form-loading">
@@ -37,23 +42,24 @@
 				</div>
 
 
-				<div class="form-group">
-					<label for="nome">Nome</label> <input id="nome" type="text"
+				<!-- th:append se o field 'nome' tiver algum erro ele adiciona a classe has-error -->
+				<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+						<label for="nome" class="control-label">Nome</label> <input id="nome" type="text"
 						class="form-control" th:field="*{nome}" />
 				</div>
 
 				<div class="row">
 
-					<div class="col-sm-6 form-group">
-						<label for="tipo" class="control-label">Tipo</label> <select
-							id="tipo" class="form-control" th:field="*{tipo}">
+					<div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('tipo')} ? has-error">
+						<label for="tipo" class="control-label">Tipo</label> 
+						<select id="tipo" class="form-control" th:field="*{tipo}">
 							<option value="">Selecione o tipo</option>
 							<option th:each="tipo : ${tipos}" th:value="${tipo}"
 								th:text="${tipo.descricao}"></option>
 						</select>
 					</div>
 
-					<div class="col-sm-6 form-group">
+					<div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('safra')} ? has-error">
 						<label for="safra" class="control-label">Safra</label> <input
 							id="safra" type="text" class="form-control" th:field="*{safra}" />
 					</div>
@@ -62,12 +68,12 @@
 
 				<div class="row">
 
-					<div class="col-sm-6 form-group">
+					<div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('volume')} ? has-error">
 						<label for="volume" class="control-label">Volume</label> <input
 							id="volume" type="text" class="form-control" th:field="*{volume}" />
 					</div>
 
-					<div class="col-sm-6 form-group">
+					<div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('valor')} ? has-error">
 						<label for="valor" class="control-label">Valor</label> <input
 							id="valor" type="text" class="form-control" th:field="*{valor}" />
 					</div>
