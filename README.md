@@ -1,5 +1,5 @@
 # wine
-Projeto de cadastro de vinhos utilizando Spring Boot, Spring Data JPA, Spring Security, DevTools, Thymeleaf e Mysql.
+Projeto de cadastro de vinhos utilizando Spring Boot, Spring Data JPA, Spring Security, DevTools, Thymeleaf, jquery e Mysql.
 
 criando um sistema responsivo utilizando um template disponibilizado pela Algaworks.
 
