@@ -15,6 +15,7 @@ import com.wine.model.TipoVinho;
 import com.wine.model.Vinho;
 import com.wine.repository.Vinhos;
 import com.wine.service.CadastroVinhoService;
+import com.wine.storage.FotoStorage;
 
 @Controller
 @RequestMapping("/vinhos")
@@ -25,6 +26,9 @@ public class VinhosController {
 	
 	@Autowired
 	private CadastroVinhoService cadastroVinhoService;
+	
+	@Autowired
+	private FotoStorage fotoStorage;
 	
 	@RequestMapping
 	public ModelAndView pesquisa() {
@@ -61,6 +65,10 @@ public class VinhosController {
 	@RequestMapping("/{codigo}")
 	public ModelAndView visualizar(@PathVariable("codigo") Vinho vinho) {
 		ModelAndView mv = new ModelAndView("vinho/VisualizacaoVinho");
+		
+		if (vinho.temFoto()) {
+			vinho.setUrl(fotoStorage.getUrl(vinho.getFoto()));
+		}
 		//Vinho vinho = vinhos.findOne(codigo);
 		mv.addObject("vinho", vinho);
 		return mv;
